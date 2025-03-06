@@ -1,31 +1,31 @@
-### Pegasus - Sistema de Gerenciamento para Empresa de Turismo
+# Pegasus - Sistema de Gerenciamento para Empresa de Turismo
 
-# Capa
+## Capa
 - Título do Projeto: Sistema de Gerenciamento de Viagens para Empresa de Turismo
 - Nome do Estudante: Lucas Willian de Souza Serpa
 - Curso: Engenharia de Software
 - Data de Entrega: 
 
-# Resumo
+## Resumo
 Este documento apresenta a especificação de um sistema de gerenciamento de viagens para uma empresa de turismo. O sistema permitirá o cadastro de motoristas e viagens, além de fornecer controle financeiro detalhado das operações. O objetivo principal é facilitar a administração das viagens e fornecer cálculos financeiros precisos, incluindo custos de pedágio e combustível. O projeto será desenvolvido com React no front-end, NestJS no back-end, e utilizará MySQL como banco de dados, com suporte a notificações via SMS para motoristas.
 
-# Introdução
-# Contexto
+## Introdução
+### Contexto
 Empresas de turismo precisam gerenciar motoristas, ônibus e viagens de maneira eficiente para garantir organização e controle financeiro. Atualmente, a administração dessas informações pode ser complexa e suscetível a erros manuais.
 
-# Justificativa
+## Justificativa
 A criação deste sistema busca otimizar o gerenciamento da empresa de turismo do usuário, proporcionando um ambiente centralizado para o controle de viagens, motoristas e custos operacionais. Isso reduzirá o trabalho manual e melhorará a precisão dos cálculos financeiros.
 
-# Objetivos
+## Objetivos
 - Desenvolver um sistema para cadastro e gerenciamento de motoristas e viagens.
 - Automatizar o cálculo de receitas e despesas, incluindo custos com pedágios e combustível.
 - Enviar notificações via SMS aos motoristas sobre as viagens agendadas.
 
-# Descrição do Projeto
-# Tema do Projeto
+## Descrição do Projeto
+### Tema do Projeto
 O sistema de gerenciamento de viagens permitirá que o administrador cadastre viagens com informações detalhadas, como data, horário, origem, destino, valor, ônibus utilizado e motorista responsável.
 
-# Problemas a Resolver
+## Problemas a Resolver
 - Falta de organização no controle manual de viagens.
 - Dificuldade em calcular receitas e despesas das viagens.
 - Comunicação ineficiente com motoristas.
@@ -34,9 +34,9 @@ Limitações
 - O sistema não incluirá funcionalidades de rastreamento em tempo real dos ônibus.
 - Não será implementado um módulo de pagamento online.
 
-# Especificação Técnica
+## Especificação Técnica
 
-# Requisitos de Software
+### Requisitos de Software
 
 Lista de Requisitos
 
@@ -58,7 +58,7 @@ Requisitos Não Funcionais (RNF):
 Representação dos Requisitos
 Os requisitos funcionais serão representados por meio de um Diagrama de Casos de Uso em UML.
 
-# Considerações de Design
+## Considerações de Design
 
 Visão Inicial da Arquitetura
 
@@ -76,7 +76,7 @@ Padrões de Arquitetura
 
 Componentes: Módulo de cadastro, cálculo financeiro, notificações.
 
-# Stack Tecnológica
+## Stack Tecnológica
 Linguagens de Programação
 
 - Frontend: JavaScript/TypeScript com React.
@@ -103,13 +103,13 @@ Considerações de Segurança
 - Uso de HTTPS para comunicação segura.
 - Proteção contra SQL Injection e XSS.
 
-# Próximos Passos
+## Próximos Passos
 - Desenvolvimento do MVP com as principais funcionalidades.
 - Testes internos para validação do sistema.
 - Implementação do módulo de notificação via SMS.
 - Revisão final e ajustes conforme feedback do usuário.
 
-# Referências
+## Referências
 
 - Documentação oficial do React e NestJS.
 - APIs para consulta de preços de combustível.
@@ -117,7 +117,7 @@ Considerações de Segurança
 - Diagramas detalhados de arquitetura.
 - Explicação sobre o cálculo do lucro líquido.
 
-# Avaliações de Professores
+## Avaliações de Professores
 Considerações Professor/a:
 Considerações Professor/a:
 Considerações Professor/a:
