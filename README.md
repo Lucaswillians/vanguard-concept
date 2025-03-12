@@ -1,4 +1,4 @@
-# ** Vanguard - Sistema de Gerenciamento para Empresa de Turismo**
+# **Vanguard - Sistema de Gerenciamento para Empresa de Turismo**
 
 ## 📌 Capa
 - **Título do Projeto:** Sistema de Gerenciamento de Viagens para Empresa de Turismo  
