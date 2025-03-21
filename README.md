@@ -1,84 +1,140 @@
 # **Vanguard - Sistema de Gerenciamento para Empresa de Turismo**
 
 ## 📌 Capa
-- **Título do Projeto:** Sistema de Gerenciamento de Viagens para Empresa de Turismo  
-- **Nome do Estudante:** Lucas Willian de Souza Serpa  
-- **Curso:** Engenharia de Software  
-- **Data de Entrega:**  
+**Título do Projeto:** Sistema de Gerenciamento de Viagens para Empresa de Turismo  
+**Nome do Estudante:** Lucas Willian de Souza Serpa  
+**Curso:** Engenharia de Software  
+**Data de Entrega:**  
 
 ---
 
 ## 📌 Resumo
-Este documento apresenta a especificação de um sistema de gerenciamento de viagens para uma empresa de turismo. O sistema permitirá o cadastro de motoristas e viagens, além de fornecer controle financeiro detalhado das operações.  
+Este documento apresenta a especificação de um sistema de gerenciamento de viagens para uma empresa de turismo. O sistema permitirá a **criação de orçamentos, gerenciamento de viagens, controle financeiro e cálculo de salários de motoristas**.  
 
-Além disso, contará com um módulo de orçamentos para cálculo automático de custos e um sistema de cálculo de salários dos motoristas, considerando diferentes métodos de pagamento.  
+O fluxo do sistema será o seguinte:  
+1. O **usuário fará login** no sistema.  
+2. Criará um **orçamento de viagem**, que poderá ser **exportado em PDF** para envio ao cliente.  
+3. O orçamento ficará **em aguardo** até o cliente aceitar.  
+4. Se aceito, a **viagem será confirmada**, e o **motorista será notificado via SMS**.  
+5. O sistema manterá um **histórico de viagens**, listando as **viagens ocorridas e futuras**.  
+6. Após a viagem, o sistema permitirá o **cálculo do salário do motorista**, considerando os dias trabalhados e variáveis adicionais.  
 
-O projeto será desenvolvido com **React** no front-end, **NestJS** no back-end e utilizará **MySQL** como banco de dados, com suporte a notificações via **SMS** para motoristas.
+O projeto será desenvolvido com **React** no front-end, **NestJS** no back-end e utilizará **MySQL** como banco de dados, com suporte a notificações via **SMS** para motoristas.  
 
 ---
 
 ## 📌 Introdução
 
 ### **Contexto**
-Empresas de turismo precisam gerenciar motoristas, ônibus e viagens de maneira eficiente para garantir organização e controle financeiro. Atualmente, a administração dessas informações pode ser complexa e suscetível a erros manuais.
+Empresas de turismo precisam gerenciar motoristas, ônibus e viagens de maneira eficiente para garantir organização e controle financeiro. Atualmente, a administração dessas informações pode ser complexa e suscetível a erros manuais.  
 
 ### **Justificativa**
-A criação deste sistema busca otimizar o gerenciamento da empresa de turismo do usuário, proporcionando um ambiente centralizado para o controle de viagens, motoristas, custos operacionais e orçamentos. Isso reduzirá o trabalho manual e melhorará a precisão dos cálculos financeiros.
+A criação deste sistema busca otimizar o gerenciamento da empresa de turismo do usuário, proporcionando um ambiente centralizado para **controle de orçamentos, viagens, custos operacionais e pagamento de motoristas**. Isso reduzirá o trabalho manual e melhorará a precisão dos cálculos financeiros.  
 
 ---
 
-## 📌 Objetivos
+## 📌 Processo da Venda e da Viagem
 
-### 🎯 **Objetivos Gerais**
-- Desenvolver um sistema para **cadastro e gerenciamento de motoristas e viagens**.
-- Automatizar o cálculo de **receitas e despesas**, incluindo custos com pedágios e combustível.
-- Implementar um módulo de **orçamentos**, permitindo a geração de propostas automáticas e exportação para **PDF**.
-- Criar um **sistema de cálculo de salários** para os motoristas.
-- Enviar **notificações via SMS** aos motoristas sobre as viagens agendadas.
+### **Origem da Venda**
+Os clientes costumam entrar em contato com a empresa de três formas:  
+1. **Contato direto** do cliente com a empresa.  
+2. **Indicação** por empresas parceiras.  
+3. **Prospecção ativa** feita pelo setor comercial da empresa.  
 
-### 🎯 **Objetivos Específicos**
-- Permitir a geração e edição de **orçamentos** com base nas informações da viagem.
-- Criar um histórico de **orçamentos aprovados**, vinculando-os às viagens realizadas.
-- Implementar diferentes formas de **cálculo de salário** para os motoristas, com base em salário fixo, comissão ou por km rodado.
-- Criar um **relatório financeiro** detalhado das operações.
+### **Como é feito o orçamento?**
+O orçamento é calculado com base nos seguintes critérios:  
+
+1️⃣ **Definição da Quilometragem**  
+   - É considerada a **ida e a volta** da viagem.  
+   - É adicionado um **extra de 7%** para deslocamentos dentro da cidade de destino.  
+
+2️⃣ **Cálculo do Valor da Viagem**  
+   - Multiplicação da quilometragem total por **R$ 8,00/km** (este valor é variável e pode ser alterado no sistema).  
+
+3️⃣ **Cálculo de Impostos**  
+   - Adição de **8,33%** sobre o valor da viagem para cobrir impostos (também configurável).  
+
+4️⃣ **Custos Adicionais**  
+   - **Pedágios:** São adicionados caso existam na rota.  
+   - **Pagamento do motorista:** R$ **200 por dia** (variável, dependendo da duração da viagem).  
+
+5️⃣ **Cálculo Final**  
+   - Após considerar todos os custos, o orçamento final é gerado e enviado ao cliente.  
+
+### **Relacionamento com o Cliente**
+
+- O cliente geralmente realiza o pagamento **dois dias antes** da viagem.  
+- Em casos de **viagens de última hora**, o pagamento ocorre no momento do envio da lista de passageiros.  
+- Sempre que possível, o cliente recebe o **ônibus maior**, mas se ele não estiver disponível, será utilizado o menor (sem alteração no preço).  
 
 ---
 
-## 📌 Descrição do Projeto
+## 📌 Cálculo de Validação do Orçamento
 
-### **Tema do Projeto**
-O sistema de gerenciamento de viagens permitirá que o administrador cadastre viagens com informações detalhadas, como data, horário, origem, destino, valor, ônibus utilizado e motorista responsável.  
+Após gerar o orçamento, um **cálculo de validação** é feito para garantir que o preço cobrado está adequado.  
 
-Além disso, contará com um **módulo de orçamentos**, que possibilitará a geração automática do custo de uma viagem antes de sua confirmação.
+1️⃣ **Cálculo do Consumo de Diesel**  
+   - Considera que **o ônibus faz 3 km por litro**.  
+   - O cálculo é:  
+     ```
+     Quilometragem total ÷ 3 = Litros consumidos
+     ```  
+
+2️⃣ **Cálculo do Custo do Diesel**  
+   - Multiplicação do consumo de litros pelo valor do diesel (**R$ 7,00 por litro**).  
+
+3️⃣ **Validação do Orçamento**  
+   - O custo total do diesel é dividido pelo valor total da viagem:  
+     ```
+     (Custo do diesel ÷ Valor total da viagem) × 100 = Percentual de custo
+     ```  
+   - Se este valor for **superior a 30%**, significa que a viagem foi subcotada.  
+   - Para corrigir, o sistema **ajusta automaticamente** o valor de R$ 8,00/km (definido na etapa de orçamento).  
 
 ---
 
-## 📌 Problemas a Resolver
+## 📌 Viagem Finalizada e Cálculo do Salário do Motorista
 
-- **Falta de organização** no controle manual de viagens.  
-- **Dificuldade em calcular receitas e despesas** das viagens.  
-- **Falta de um sistema de orçamentos**, resultando em cálculos manuais demorados.  
-- **Gestão ineficiente dos salários dos motoristas**, dificultando a previsão de custos.  
-- **Comunicação ineficiente com motoristas** sobre as viagens confirmadas.  
+Após a conclusão da viagem, o sistema calculará o pagamento do motorista considerando:  
+
+✅ **R$ 200 por dia** trabalhado.  
+✅ **R$ 35 por dia de Vale-Refeição (VR)**.  
+✅ **R$ 50 extra** caso o motorista tenha **limpado o ônibus antes da viagem**.  
+✅ **R$ 35 adicionais** para **lavagem das capas dos bancos** (caso necessário).  
+
+O pagamento do motorista é sempre realizado **após a viagem ser concluída**.  
+
+---
+
+## 📌 Custos Previstos e Não Previstos
+
+### **Custos Não Previstos**
+- **Quebra do veículo:**  
+  - Se o ônibus apresentar problemas mecânicos, o motorista tentará resolver.  
+  - Caso não consiga, um mecânico será acionado, e **a empresa cobre os custos**.  
+  - Se o veículo não for consertado a tempo, um **ônibus reserva** ou uma **empresa parceira** realizará o transporte.  
+
+### **Custos Previstos**
+- **Manutenção periódica:**  
+  - A cada **35 mil km** os ônibus passam por uma **revisão completa**.  
 
 ---
 
 ## 📌 Especificação Técnica
 
-### **Lista de Requisitos**
+### **Requisitos Funcionais (RF)**
 
-#### ✅ **Requisitos Funcionais (RF)**
+- **RF01**: O sistema deve permitir o login de usuários.  
+- **RF02**: O sistema deve permitir a **criação de orçamentos de viagem**.  
+- **RF03**: O sistema deve permitir **exportar orçamentos em PDF**.  
+- **RF04**: O sistema deve manter um **status de aguardo** para orçamentos não aprovados.  
+- **RF05**: O sistema deve permitir **confirmar viagens após aprovação do cliente**.  
+- **RF06**: O sistema deve **enviar SMS para o motorista** ao confirmar uma viagem.  
+- **RF07**: O sistema deve manter um **histórico de viagens ocorridas e futuras**.  
+- **RF08**: O sistema deve permitir o **cálculo automático do salário dos motoristas**.  
+- **RF09**: O sistema deve gerar um **relatório financeiro** detalhado das operações.  
 
-- **RF01**: O sistema deve permitir o cadastro de motoristas.  
-- **RF02**: O sistema deve permitir o cadastro de viagens com data, horário, origem, destino, valor, ônibus e motorista.  
-- **RF03**: O sistema deve calcular automaticamente o lucro bruto e líquido de cada viagem.  
-- **RF04**: O sistema deve obter o preço do combustível em tempo real.  
-- **RF05**: O sistema deve enviar um SMS para o motorista com os detalhes da viagem ao ser confirmada.  
-- **RF06**: O sistema deve permitir a criação de orçamentos de viagens antes da confirmação.  
-- **RF07**: O sistema deve gerar **PDFs de orçamentos** para envio ao cliente.  
-- **RF08**: O sistema deve permitir que orçamentos sejam convertidos em viagens confirmadas.  
-- **RF09**: O sistema deve calcular automaticamente o **salário dos motoristas**, com base no tipo de pagamento (fixo, comissão ou por km rodado).  
-- **RF10**: O sistema deve gerar um **relatório financeiro**, incluindo receita, despesas e custos com motoristas.  
+---
 
 #### ✅ **Requisitos Não Funcionais (RNF)**
 
