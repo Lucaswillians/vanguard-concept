@@ -15,11 +15,11 @@ O fluxo do sistema será o seguinte:
 1. O **usuário fará login** no sistema.  
 2. Criará um **orçamento de viagem**, que poderá ser **exportado em PDF** para envio ao cliente.  
 3. O orçamento ficará **em aguardo** até o cliente aceitar.  
-4. Se aceito, a **viagem será confirmada**, e o **motorista será notificado via SMS**.  
+4. Se aceito, a **viagem será confirmada**, e o **motorista será notificado via email**.  
 5. O sistema manterá um **histórico de viagens**, listando as **viagens ocorridas e futuras**.  
 6. Após a viagem, o sistema permitirá o **cálculo do salário do motorista**, considerando os dias trabalhados e variáveis adicionais.  
 
-O projeto será desenvolvido com **React** no front-end, **NestJS** no back-end e utilizará **MySQL** como banco de dados, com suporte a notificações via **SMS** para motoristas.  
+O projeto será desenvolvido com **React** no front-end, **NestJS** no back-end e utilizará **MySQL** como banco de dados, com suporte a notificações via **email** para motoristas.  
 
 ---
 
@@ -129,7 +129,7 @@ O pagamento do motorista é sempre realizado **após a viagem ser concluída**.
 - **RF03**: O sistema deve permitir **exportar orçamentos em PDF**.  
 - **RF04**: O sistema deve manter um **status de aguardo** para orçamentos não aprovados.  
 - **RF05**: O sistema deve permitir **confirmar viagens após aprovação do cliente**.  
-- **RF06**: O sistema deve **enviar SMS para o motorista** ao confirmar uma viagem.  
+- **RF06**: O sistema deve **enviar email para o motorista** ao confirmar uma viagem.  
 - **RF07**: O sistema deve manter um **histórico de viagens ocorridas e futuras**.  
 - **RF08**: O sistema deve permitir o **cálculo automático do salário dos motoristas**.  
 - **RF09**: O sistema deve gerar um **relatório financeiro** detalhado das operações.  
@@ -192,7 +192,6 @@ A aplicação seguirá uma arquitetura baseada em três camadas principais:
 ### **Frameworks e Bibliotecas**
 - React (UI)  
 - NestJS (API)  
-- Twilio (envio de SMS)  
 - Axios (requisições HTTP para buscar preço do combustível)  
 - TypeORM (gerenciamento do banco de dados)  
 
@@ -215,5 +214,4 @@ A aplicação seguirá uma arquitetura baseada em três camadas principais:
 ## 📌 Referências
 - Documentação oficial do React e NestJS.  
 - APIs para consulta de preços de combustível.  
-- Serviços de envio de SMS como Twilio.  
 - Explicação sobre o cálculo do lucro líquido.  
